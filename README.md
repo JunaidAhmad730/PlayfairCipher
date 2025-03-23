@@ -1,7 +1,7 @@
 # How the Playfair Cipher Works
 Key Square Generation:
 
-A 5×5 matrix is created using a keyword (without duplicate letters).
+##A 5×5 matrix is created using a keyword (without duplicate letters).
 
 The remaining letters of the alphabet (excluding 'J', which is merged with 'I') fill the matrix.
 
