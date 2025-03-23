@@ -1,4 +1,4 @@
-How the Playfair Cipher Works
+# How the Playfair Cipher Works
 Key Square Generation:
 
 A 5×5 matrix is created using a keyword (without duplicate letters).
