@@ -18,5 +18,4 @@ Same column → Replace each letter with the one below (wrap around if needed).
 Different row and column → Form a rectangle and swap the letters at the opposite corners.
 
 Decryption Process:
-
 The process is reversed using the same rules but shifting left for rows and up for columns.
