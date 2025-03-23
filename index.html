@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playfair Cipher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0a1e49;
+            color: #fffefe;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 10px;
+        }
+        
+        .container {
+            max-width: 700px;
+            padding: 30px;
+            background: #000000;
+            border-radius: 15px;
+            box-shadow: 10px 10px 100px rgba(212, 15, 15, 0.87);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        input[type="text"] {
+            width: 70%;
+            padding: 20px;
+            margin: 15px 10px;
+            border: none;
+            border-radius: 5px;
+            background: #94d6cb;
+            color: rgb(20, 20, 20);
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        input[type="text"]:focus {
+            transform: scale(1.05);
+        }
+
+        .button-container {
+            border-radius: 10px;
+        }
+
+        .header {
+            position: absolute;
+            top: 1px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            color: #fffefe;
+        }
+
+        button {
+            padding: 10px 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 20px;
+            width: 30%;
+            transition: transform 0.2s ease-in-out;
+        }
+        button:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .encrypt { background: green; color: black; }
+        .decrypt { background: red; color: black; }
+        .copy { background: yellow; color: black; margin-top: 20px; }
+
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            padding: 10px;
+            background: #444;
+            border-radius: 5px;
+            word-break: break-word;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        .matrix {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 3px;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeInScale 0.5s forwards 1s;
+        }
+        
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .matrix div {
+            padding: 15px;
+            background: #07a4c0af;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.2s ease-in-out;
+        }
+        .matrix div:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="header">🔐PLAYFAIR CIPHER🔐</h1>
+
+<div class="container">
+    <label>Enter Keyword:</label>
+    <input type="text" id="key" placeholder="" oninput="generateMatrix()" />
+    
+    <label>Enter Plaintext:</label>
+    <input type="text" id="plaintext" placeholder="" oninput="validateInput(this)" />
+    
+    <label>Enter Ciphertext:</label>
+    <input type="text" id="ciphertext" placeholder="" oninput="validateInput(this)" />
+    
+    <div class="button-container">
+        <button class="decrypt" onclick="decryptText()">Decrypt</button>
+        <button class="encrypt" onclick="encryptText()">Encrypt</button>
+    </div>
+    
+    <div class="result" id="result">Result will appear here</div>
+    <button class="copy" onclick="copyToClipboard()">Copy Result</button>
+    
+    <h3>5x5 Playfair Matrix </h3>
+    <div class="matrix" id="matrix"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
